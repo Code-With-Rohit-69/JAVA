@@ -32,9 +32,7 @@ public class MyNewApp {
 
             robot.keyRelease(KeyEvent.VK_CONTROL);
             robot.keyRelease(KeyEvent.VK_V);
-
-            System.out.println(i);
-
+            
             robot.keyPress(KeyEvent.VK_ENTER);
             robot.keyRelease(KeyEvent.VK_ENTER);
 
