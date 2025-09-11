@@ -2,7 +2,7 @@ public class WordBreak {
 
     static class Node {
         Node[] children = new Node[26];
-        boolean endOfWord = false;
+        boolean eow = false;
 
         public Node() {
             for (int i = 0; i < 26; i++) {
@@ -16,9 +16,8 @@ public class WordBreak {
     public static void insert(String word) {
         Node curr = root;
 
-        for (int i = 0; i < word.length(); i++) {
-            int idx = word.charAt(i) - 'a';
-
+        for (char ch : word.toCharArray()) {
+            int idx = ch - 'a';
             if (curr.children[idx] == null) {
                 curr.children[idx] = new Node();
             }
@@ -26,15 +25,14 @@ public class WordBreak {
             curr = curr.children[idx];
         }
 
-        curr.endOfWord = true;
+        curr.eow = true;
     }
 
     public static boolean search(String word) {
         Node curr = root;
 
-        for (int i = 0; i < word.length(); i++) {
-            int idx = word.charAt(i) - 'a';
-
+        for (char ch : word.toCharArray()) {
+            int idx = ch - 'a';
             if (curr.children[idx] == null) {
                 return false;
             }
@@ -42,18 +40,17 @@ public class WordBreak {
             curr = curr.children[idx];
         }
 
-        return curr.endOfWord;
+        return curr.eow;
     }
 
-    public static boolean wordBreak(String s) {
-
-        if (s.length() == 0) {
+    public static boolean wordBreak(String key) {
+        if (key.length() == 0) {
             return true;
         }
 
-        for (int i = 1; i <= s.length(); i++) {
-            String first = s.substring(0, i);
-            String second = s.substring(i);
+        for (int i = 1; i <= key.length(); i++) {
+            String first = key.substring(0, i);
+            String second = key.substring(i);
 
             if (search(first) && wordBreak(second)) {
                 return true;
@@ -65,12 +62,12 @@ public class WordBreak {
 
     public static void main(String[] args) {
         String[] words = { "i", "like", "sam", "samsung", "mobile", "ice" };
+        String key = "ilikesamsung";
 
         for (String word : words) {
             insert(word);
         }
 
-        String key = "ilikesaung";
         System.out.println(wordBreak(key));
 
     }
