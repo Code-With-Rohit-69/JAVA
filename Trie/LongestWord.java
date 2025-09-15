@@ -32,7 +32,7 @@ public class LongestWord {
 
     public static void longestWord(Node root, StringBuilder temp) {
 
-        if(root == null) {
+        if (root == null) {
             return;
         }
 
