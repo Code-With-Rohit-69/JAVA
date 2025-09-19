@@ -90,8 +90,24 @@ public class MultipleGraphs {
     // dfs
 
     public static void dfs(ArrayList<Edge>[] graph) {
+        boolean[] visited = new boolean[graph.length];
+
         for (int i = 0; i < graph.length; i++) {
-            
+            if (!visited[i]) {
+                dfsUtil(graph, visited, i);
+            }
+        }
+    }
+
+    public static void dfsUtil(ArrayList<Edge>[] graph, boolean[] visited, int curr) {
+        visited[curr] = true;
+
+        for (int i = 0; i < graph[curr].size(); i++) {
+            Edge e = graph[curr].get(i);
+
+            if (!visited[e.dest]) {
+                dfsUtil(graph, visited, e.dest);
+            }
         }
     }
 
