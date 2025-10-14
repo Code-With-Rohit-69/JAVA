@@ -41,42 +41,43 @@ public class TopologicalSortingBFS {
 
     }
 
-    public static void calculateInDegree(ArrayList<Edge> graph[], int[] inDegree) {
+    public static void calculateIndegree(ArrayList<Edge> graph[], int[] indegree) {
         for (int i = 0; i < graph.length; i++) {
             for (int j = 0; j < graph[i].size(); j++) {
                 Edge e = graph[i].get(j);
-                inDegree[e.des]++;
+                indegree[e.des]++;
             }
         }
     }
 
     public static void topologicalSortingBFS(ArrayList<Edge> graph[]) {
+        int[] indegree = new int[graph.length];
+
+        calculateIndegree(graph, indegree);
+
         Queue<Integer> q = new LinkedList<>();
 
-        int inDegree[] = new int[graph.length];
-        calculateInDegree(graph, inDegree);
-
-        for (int i = 0; i < inDegree.length; i++) {
-            if (inDegree[i] == 0) {
+        for (int i = 0; i < indegree.length; i++) {
+            if (indegree[i] == 0) {
                 q.add(i);
             }
         }
 
         while (!q.isEmpty()) {
             int curr = q.remove();
+
             System.out.print(curr + " ");
 
             for (int i = 0; i < graph[curr].size(); i++) {
                 Edge e = graph[curr].get(i);
-                inDegree[e.des]--;
 
-                if (inDegree[e.des] == 0) {
+                indegree[e.des]--;
+
+                if (indegree[e.des] == 0) {
                     q.add(e.des);
                 }
             }
         }
-
-        System.out.println();
 
     }
 
