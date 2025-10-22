@@ -7,7 +7,7 @@ public class NumberOfConnectedComponents {
             graph[i] = new ArrayList<>();
         }
 
-        for(int[] e : arr) {
+        for(int[] e : arr) {    
             graph[e[0]].add(new Edge(e[0], e[1]));
         }
     }
