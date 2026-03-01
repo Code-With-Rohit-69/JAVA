@@ -20,7 +20,6 @@ public class NumberOfDistinctIslands {
                 dfs(grid, x, y, ith, jth, n, m, list, visited);
             }
         }
-
     }
 
     public static String toString(int r, int c) {
