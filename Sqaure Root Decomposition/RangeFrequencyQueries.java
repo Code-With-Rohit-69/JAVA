@@ -22,6 +22,7 @@ public class RangeFrequencyQueries {
         }
 
     }
+    // this is a good example of square root decomposition technique. The idea is to divide the array into blocks of size sqrt(n) and precompute the frequency of each element in each block. Then, for each query, we can quickly compute the frequency of the given value in the specified range by combining the frequencies from the relevant blocks and any partial blocks at the edges of the range.
 }
 
 class RangeFreqQuery {
