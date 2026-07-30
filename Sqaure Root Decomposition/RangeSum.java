@@ -17,6 +17,8 @@ public class RangeSum {
         nums[index] = val;
     }
 
+    // i am busy in watching Money Heist
+
     public static int query(int l, int r, int[] nums) {
         int sum = 0;
 
